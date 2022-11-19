@@ -1,0 +1,152 @@
+
+body {
+    background-color: rgb(0, 8, 54);
+
+}
+
+body::-webkit-scrollbar {
+    display: none;
+
+}
+
+:root {
+    --blur-size: 30px;
+
+}
+
+
+#obj {
+    position: relative;
+    height: 100vh;
+}
+
+
+.parts {
+    transition: all 1000ms 0s linear;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+
+}
+
+
+.red { filter: saturate(100%) hue-rotate(0deg) brightness(100%); }
+.red_back { filter: saturate(100%) hue-rotate(0deg) brightness(100%) blur( var(--blur-size) ); }
+
+.green { filter: saturate(100%) hue-rotate(90deg) brightness(100%); }
+.green_back { filter: saturate(100%) hue-rotate(90deg) brightness(100%) blur(var(--blur-size)); }
+
+.blue { filter: saturate(100%) hue-rotate(180deg) brightness(100%); }
+.blue_back { filter: saturate(100%) hue-rotate(180deg) brightness(100%) blur(var(--blur-size)); }
+
+.purple { filter: saturate(100%) hue-rotate(240deg) brightness(100%); }
+.purple_back { filter: saturate(100%) hue-rotate(240deg) brightness(100%) blur(var(--blur-size)); }
+
+.gray { filter: saturate(0%) hue-rotate(0deg) brightness(150%); }
+.gray_back { filter: saturate(0%) hue-rotate(0deg) brightness(150%) blur(var(--blur-size)); }
+
+
+
+
+.gaming {
+    animation: change_color 6s linear infinite;
+    /* animation-name: change_color;
+    animation-timing-function: linear;
+    animation-duration: 3s;
+    animation-iteration-count: infinite; */
+}
+
+@keyframes change_color {
+    from {
+        /* filter: hue-rotate(0deg) brightness(1.4); */
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+.gaming_back {
+    animation: change_color_back 6s linear infinite;
+}
+
+@keyframes change_color_back {
+    from {
+        filter: hue-rotate(0deg) blur(var(--blur-size));
+    }
+
+    to {
+        filter: hue-rotate(360deg) blur(var(--blur-size));
+    }
+}
+
+
+
+
+
+
+
+/* ほこら */
+
+#hokora {
+    position: absolute;
+
+    width: 50px;
+
+    top: calc( 50% + 100px ) ;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    /* -webkit-transform: translateY(-50%) translateX(-50%); */
+
+    filter: blur(2px) brightness(50%) saturate(100%) opacity(1%);
+    /* filter: blur(2px) brightness(100%) saturate(0%); */
+
+}
+
+/* 月 */
+
+.moon {
+    position: absolute;
+
+    width: 100px;
+
+    top: calc( 50% - 1000px ) ;
+    right: 20%;
+
+    /* top: calc( 0% ) ;
+    left: 50%; */
+
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.moon_anim {
+    animation: change_brightness 8s ease-in-out infinite alternate;
+}
+
+@keyframes change_brightness {
+    from {
+        filter: opacity(0.8) brightness(0.9) blur(3px);
+    }
+
+    to {
+        filter: opacity(0.7) brightness(0.8) blur(3px);
+    }
+}
+
+.moon_anim_back {
+    animation: change_brightness_back 8s ease-in-out infinite alternate;
+}
+
+@keyframes change_brightness_back {
+    from {
+        filter: opacity(0.7) brightness(0.8) blur( var(--blur-size) );
+    }
+
+    to {
+        filter: opacity(0.6) brightness(0.7) blur( var(--blur-size) );
+    }
+}
